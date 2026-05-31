@@ -4,7 +4,7 @@ import { Pressable } from "react-native";
 
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { useColorScheme } from "@/components/useColorScheme";
-import Colors from "@/constants/Colors";
+import { Colors } from "@/constants/Colors";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
