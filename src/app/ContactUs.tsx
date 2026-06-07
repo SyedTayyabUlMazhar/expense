@@ -1,8 +1,19 @@
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet } from "react-native";
 
-import { Text, View } from "@/components/Themed";
+import
+  {
+    Button,
+    Text,
+    TextInput,
+    useThemeColor,
+    View,
+  } from "@/components/Themed";
+import { ColorNames } from "@/constants/Colors";
 
 export default function ContactUsScreen() {
+  const primary = useThemeColor({}, ColorNames.primary);
+  const primaryForeground = useThemeColor({}, ColorNames.primaryForeground);
+
   return (
     <View style={styles.container}>
       {/* Main content */}
@@ -12,34 +23,25 @@ export default function ContactUsScreen() {
           Have a question or feedback? Send us a message.
         </Text>
 
-        <TextInput
-          placeholder="Your Name"
-          placeholderTextColor="#999"
-          style={styles.input}
-        />
+        <TextInput placeholder="Your Name" />
 
         <TextInput
           placeholder="Email Address"
-          placeholderTextColor="#999"
           keyboardType="email-address"
           autoCapitalize="none"
-          style={styles.input}
         />
 
         <TextInput
           placeholder="Message"
-          placeholderTextColor="#999"
           multiline
           numberOfLines={5}
           textAlignVertical="top"
-          style={[styles.input, styles.messageInput]}
+          style={styles.messageInput}
         />
       </View>
       {/* Footer - stays at bottom */}
       <View style={styles.footer}>
-        <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>Send Message</Text>
-        </TouchableOpacity>
+        <Button text="Send Message" />
       </View>
     </View>
   );
@@ -71,29 +73,7 @@ const styles = StyleSheet.create({
     marginBottom: 24,
     lineHeight: 22,
   },
-  input: {
-    borderWidth: 1,
-    borderColor: "#ddd",
-    borderRadius: 12,
-    paddingHorizontal: 16,
-    paddingVertical: 14,
-    fontSize: 16,
-    marginBottom: 16,
-    backgroundColor: "#fff",
-  },
   messageInput: {
     minHeight: 140,
-  },
-
-  button: {
-    backgroundColor: "#111",
-    paddingVertical: 16,
-    borderRadius: 12,
-    alignItems: "center",
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
   },
 });
